@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Hiroto Template">
+    <meta name="keywords" content="Hiroto, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kitpi Kee Homestay</title>
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css"> -->
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <!-- Gallery plugin taken from https://github.com/michaelsoriano/bootstrap-photo-gallery/tree/master -->
+    <link rel="stylesheet" href="css/bootstrap-photo-gallery-plugin.css" type="text/css">
+
+    <style>
+        .bspImgWrapper {
+            min-width: 500px;
+            min-height: 500px;
+            border: 4px solid #000;
+            border-radius: 10px;
+        }
+
+        .modal {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        #bsPhotoGalleryModal {
+            position: fixed;
+            /* Keep modal as relative */
+        }
+
+        #bsPhotoGalleryModal .modal-dialog {
+            display: flex;
+            align-items: center;
+            /* Center vertically */
+            justify-content: center;
+            /* Center horizontally */
+            height: 90vh;
+            /* Full viewport height */
+            /* margin: 0; */
+            /* Remove default margin */
+        }
+
+        #bsPhotoGalleryModal .modal-content {
+            width: 90%;
+            /* Set a larger width for the modal */
+            max-width: 1200px;
+            /* Maximum width */
+            border-radius: 0;
+            /* Keep existing border radius */
+            height: auto;
+            /* Let the content define the height */
+            max-height: 90vh;
+            /* Prevent it from exceeding the viewport height */
+            overflow-y: auto;
+            /* Allow scrolling if content is too tall */
+        }
+
+        #bsPhotoGalleryModal .modal-body {
+            max-height: 80vh;
+            /* Limit height of modal body */
+            overflow-y: auto;
+            /* Enable scrolling only in the modal body */
+        }
+
+        .bsp-close {
+            position: fixed !important;
+            /* Position it relative to the viewport */
+            right: 100px !important;
+            /* 100px from the right */
+            top: 100px !important;
+            /* 100px from the top */
+            /* background: rgba(128, 128, 128, 0.8) !important; */
+            background: none !important;
+            /* Grey background */
+            padding: 10px !important;
+            /* Padding to create a circle */
+            border-radius: 50% !important;
+            /* Make it circular */
+            border: none !important;
+            /* Remove any border */
+            z-index: 1050 !important;
+            /* Ensure it appears above other elements */
+        }
+
+        .bsp-close img {
+            width: 20px !important;
+            /* Size of the X icon */
+            height: 20px !important;
+            /* Size of the X icon */
+            filter: brightness(0) invert(1) !important;
+            /* Make the icon white */
+        }
+
+        .bsp-close:hover {
+            cursor: pointer !important;
+            /* Change cursor on hover */
+            opacity: 0.8 !important;
+            /* Slightly reduce opacity on hover */
+        }
+
+        .gallery__container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow items to wrap */
+            align-items: baseline;
+            /* Space between items */
+            padding: 15px;
+            /* Add padding around the container */
+        }
+
+        .gallery__container ul {
+            display: flex;
+            flex-wrap: wrap;
+            /* Ensure items wrap in the ul */
+            padding: 0;
+            /* Remove default padding */
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        .gallery__container ul li {
+            padding: 15px;
+            /* Add padding around each item for even spacing */
+            flex: 1 0 calc(25% - 30px);
+            /* Adjust the size of items based on container width, 25% for four items per row */
+            box-sizing: border-box;
+            /* Include padding in the total width */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__logo">
+            <img src="img/logo/1.webp" fill="#F00" alt="Assembly Logo" width="60" height="60">
+            <h4 id="offcanvas_logo_text">Kitpi Kee Homestay</h4>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__btn__widget">
+            <a href="#">Book Now <span class="arrow_right"></span></a>
+        </div>
+        <div class="offcanvas__widget">
+            <ul>
+                <li><span class="icon_pin_alt"></span>Kitpi Village, Tawang, Arunachal Pradesh, India</li>
+                <li><span class="icon_phone"></span> +91 8256-957959</li>
+            </ul>
+        </div>
+        <!-- <div class="offcanvas__language">
+            <img src="img/lan.png" alt="">
+            <span>English</span>
+            <i class="fa fa-angle-down"></i>
+            <ul>
+                <li>English</li>
+                <li>Bangla</li>
+            </ul>
+        </div> -->
+        <!-- <div class="offcanvas__auth">
+            <ul>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </div> -->
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <ul class="header__top__widget">
+                            <li><span class="icon_pin_alt"></span>Kitpi Village, Tawang, Arunachal Pradesh, India</li>
+                            <li><span class="icon_phone"></span> +91 8256-957959</li>
+                        </ul>
+                    </div>
+                    <!-- <div class="col-lg-5">
+                        <div class="header__top__right">
+                            <div class="header__top__auth">
+                                <ul>
+                                    <li><a href="#">Login</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </div>
+                            <div class="header__top__language">
+                                <img src="img/lan.png" alt="">
+                                <span>English</span>
+                                <i class="fa fa-angle-down"></i>
+                                <ul>
+                                    <li>English</li>
+                                    <li>Bangla</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="header__nav__option">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="header__logo">
+                            <a href="./index.html">
+                                <img src="img/logo/1.webp" fill="#F00" alt="Assembly Logo" width="100" height="100">
+                                <span id="logo_text">Kitpi Kee Homestay</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 header__menu">
+                        <div class="header__nav">
+                            <nav>
+                                <ul class="menu__class">
+                                    <li><a href="./index.html">Home</a></li>
+                                    <li><a href="./rooms.html">Rooms</a></li>
+                                    <li class="active"><a href="./gallery.html">Gallery</a></li>
+                                    <!-- <li><a href="./about.html">About Us</a></li> -->
+                                    <!-- <li><a href="#">Pages</a>
+                                        <ul class="dropdown">
+                                            <li><a href="./about.html">About Us</a></li>
+                                            <li><a href="./room-details.html">Room Details</a></li>
+                                            <li><a href="./blog-details.html">Blog Details</a></li>
+                                        </ul>
+                                    </li> -->
+                                    <!-- <li><a href="./blog.html">News</a></li> -->
+                                    <li><a href="./contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                            <!-- <div class="header__nav__widget">
+                                <a href="#">Book Now <span class="arrow_right"></span></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="canvas__open">
+                    <span class="fa fa-bars"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <div class="container">
+        <section class="gallery__container">
+            <ul id="image__container" class="row first">
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img alt="Night away" src="img/rooms/compressed/property_1.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_1.jpg">
+                    <!-- <p>Optional text. This will also show in the modal</p> -->
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img alt="Yellow boy" src="img/rooms/compressed/property_2.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_2.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_3.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_3.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_4.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_4.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_5.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_5.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_6.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_6.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_7.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_7.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_8.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_8.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_9.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_8.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_10.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_8.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/property_11.jpg"
+                        data-bsp-large-src="img/rooms/compressed/property_8.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/sela_paas.jpg"
+                        data-bsp-large-src="img/rooms/compressed/sela_paas.jpg">
+                </li>
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <img src="img/rooms/compressed/chakzam_bridge.jpg"
+                        data-bsp-large-src="img/rooms/compressed/chakzam_bridge.jpg">
+                </li>
+            </ul>
+        </section>
+    </div>
+
+
+    <!-- Footer Section Begin -->
+    <footer class="footer set-bg" data-setbg="img/footer-bg.jpg">
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo__carousel owl-carousel">
+                        <div class="logo__carousel__item">
+                            <a href="#"><img src="img/logo/logo-1.png" alt=""></a>
+                        </div>
+                        <div class="logo__carousel__item">
+                            <a href="#"><img src="img/logo/logo-2.png" alt=""></a>
+                        </div>
+                        <div class="logo__carousel__item">
+                            <a href="#"><img src="img/logo/logo-3.png" alt=""></a>
+                        </div>
+                        <div class="logo__carousel__item">
+                            <a href="#"><img src="img/logo/logo-4.png" alt=""></a>
+                        </div>
+                        <div class="logo__carousel__item">
+                            <a href="#"><img src="img/logo/logo-5.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="container">
+            <div class="footer__content">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer__about">
+                            <div class="footer__logo">
+                                <img src="img/logo/1.webp" fill="#F00" alt="Assembly Logo" width="60" height="60">
+                                <h4 id="footer_logo_text">Kitpi Kee Homestay</h4>
+                            </div>
+                            <!-- <h4>+91 8256-957959</h4> -->
+                            <ul>
+                                <li>Kitpi Village, Tawang, Arunachal Pradesh, India</li>
+                                <li>Email us @ kitpikeehomestay@gmail.com</li>
+                            </ul>
+                            <!-- <div class="footer__social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-5 offset-md-1 col-sm-6">
+                        <div class="footer__widget">
+                            <h4>Quick Link</h4>
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <!-- <li><a href="#">Booking</a></li> -->
+                                <li><a href="./about.html">About Us</a></li>
+                                <!-- <li><a href="#">Review</a></li> -->
+                            </ul>
+                            <ul>
+                                <!-- <li><a href="#">Services</a></li> -->
+                                <li><a href="./rooms.html">Our Rooms</a></li>
+                                <li><a href="./contact.html">Contact Us</a></li>
+                                <!-- <li><a href="#">Restaurants</a></li> -->
+                                <!-- <li><a href="#">Payments</a></li> -->
+                                <!-- <li><a href="#">Events</a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-5 col-md-8 col-sm-12">
+                        <div class="footer__newslatter">
+                            <ul>
+                                <li>Kitpi Village, Tawang, Arunachal Pradesh, India</li>
+                                <li>Email us @ kitpikeehomestay@gmail.com</li>
+                            </ul>
+                            <h4>Subscribe our newlatester</h4> 
+                            <form action="#">
+                                <input type="text" placeholder="Your E-mail Address">
+                                <button type="submit">Subscribe</button>
+                            </form>
+                            <div class="footer__newslatter__find">
+                                <h5>Find Us:</h5>
+                                <div class="footer__newslatter__find__links">
+                                    <a href="#"><i class="fa fa-tripadvisor"></i></a>
+                                    <a href="#"><i class="fa fa-map-o"></i></a>
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-forumbee"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="footer__copyright">
+                <div class="row">
+                    <div class="col-lg-7 col-md-7">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        <div class="footer__copyright__text">
+                            <p>Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart" aria-hidden="true"></i> by Kitpi Kee Homestay
+                            </p>
+                        </div>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </div>
+                    <!-- <div class="col-lg-5 col-md-5">
+                        <ul class="footer__copyright__links">
+                            <li><a href="#">Terms Of Use</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/bootstrap-photo-gallery-plugin.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('ul.first').bsPhotoGallery({
+                "classes": "col-xl-3 col-lg-2 col-md-4 col-sm-4",
+                "hasModal": true,
+                "shortText": false
+            });
+        });
+    </script>
+</body>
+
+</html>
