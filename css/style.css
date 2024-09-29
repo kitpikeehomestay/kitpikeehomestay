@@ -3287,6 +3287,15 @@ ol {
 	.offcanvas__logo {
 		margin-bottom: 30px;
 	}
+	.offcanvas__logo #offcanvas_logo_text {
+		display: inline-block;
+		padding-left: 10px;
+	}
+	.offcanvas__logo h4 {
+		color: #ffffff;
+		font-weight: 500;
+		margin-bottom: 15px;
+	}
 	.offcanvas__btn__widget {
 		margin-bottom: 30px;
 	}
